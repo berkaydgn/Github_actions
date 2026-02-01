@@ -7,9 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  commit_comment:
-    types: [created]
-  Workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   test:
@@ -18,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: test
-        run: 
+        run: |
           echo "This is my first workflow"
           printenv
       
