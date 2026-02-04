@@ -13,5 +13,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
-    - name: Environment Variables Setup
-      run: printenv
+    - name: Berkay env test
+      run: | 
+        echo "Hello, World!"
+        echo $BERKAY
+      env:
+        BERKAY: "This is a secret message"
