@@ -6,10 +6,14 @@ on:
     - main
   workflow_dispatch:
   
+env:
+    GLOBAL_VAR: "This is a global variable [Global level variable]"
+
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    env:
+      Greetings: "Hello from the test pipeline! [Job level variable]"
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
@@ -18,4 +22,21 @@ jobs:
         echo "Hello, World!"
         echo $BERKAY
       env:
-        BERKAY: "This is a secret message"
+        BERKAY: "This is a secret message [Step level variable]"
+    - name: Another step
+      run: |
+        echo "This is another step in the test pipeline."
+        echo "Global variable: $GLOBAL_VAR"
+        echo $Greetings
+        echo $BERKAY
+
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Second job step
+      run: |
+        echo $GLOBAL_VAR
+        echo $Greetings
+        echo $BERKAY
+
+
