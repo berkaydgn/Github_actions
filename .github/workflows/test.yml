@@ -32,6 +32,7 @@ jobs:
 
   test2:
     runs-on: ubuntu-latest
+    needs: test
     steps:
     - name: Second job step
       run: |
